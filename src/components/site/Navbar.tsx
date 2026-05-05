@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import logo from "@/assets/nurse-home-logo.png";
+import { Logo } from "./Logo";
 
 const links = [
   { href: "#problem", label: "Problem" },
@@ -20,7 +20,8 @@ export const Navbar = () => {
       <div className="mx-auto mt-4 max-w-6xl px-4">
         <nav className="glass shadow-soft rounded-full flex items-center justify-between pl-3 pr-2 py-2">
           <a href="#top" className="flex items-center gap-2">
-            <img src={logo} alt="Nurse Home logo" className="h-9 w-auto" />
+            <Logo className="h-9 w-9" />
+            <span className="font-display font-semibold text-foreground tracking-tight">Nurse Home</span>
           </a>
           <ul className="hidden md:flex items-center gap-1">
             {links.map((l) => (
