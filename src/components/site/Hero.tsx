@@ -1,26 +1,47 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ShieldCheck, Clock, Heart, Search, Star, BadgeCheck, Timer } from "lucide-react";
 
 export const Hero = () => {
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 600], [0, -60]);
+  const y2 = useTransform(scrollY, [0, 600], [0, -30]);
+  const orbY = useTransform(scrollY, [0, 600], [0, 80]);
   return (
     <section id="top" className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-hero-soft">
       {/* Decorative orbs */}
-      <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#1a7a8a]/15 blur-3xl" />
-      <div className="pointer-events-none absolute top-40 -right-32 h-[28rem] w-[28rem] rounded-full bg-[#7fd1d6]/30 blur-3xl" />
+      <motion.div style={{ y: orbY }} className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#1a7a8a]/15 blur-3xl animate-blob" />
+      <motion.div style={{ y: orbY }} className="pointer-events-none absolute top-40 -right-32 h-[28rem] w-[28rem] rounded-full bg-[#7fd1d6]/30 blur-3xl animate-blob" />
+      {/* subtle grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+        }}
+      />
 
       <div className="relative mx-auto max-w-6xl px-6 grid lg:grid-cols-12 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          style={{ y: y2 }}
           className="lg:col-span-7"
         >
-          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-medium text-primary mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-medium text-primary mb-6 hover:shadow-soft transition-shadow"
+          >
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             Healthcare, reimagined for the home
-          </div>
+          </motion.div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
-            Smart <span className="text-gradient">Nursing Care</span>
+            Smart <span className="text-gradient-animated">Nursing Care</span>
             <br />at Home.
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
@@ -31,7 +52,7 @@ export const Hero = () => {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
-              className="group bg-gradient-primary text-primary-foreground font-medium px-7 py-4 rounded-full shadow-elegant hover:shadow-glow transition-all inline-flex items-center gap-2"
+              className="group shimmer-overlay bg-gradient-primary text-primary-foreground font-medium px-7 py-4 rounded-full shadow-elegant hover:shadow-glow transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2"
             >
               Contact Us
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -39,9 +60,22 @@ export const Hero = () => {
           </div>
 
           <div className="mt-12 flex flex-wrap gap-6 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Verified nurses</div>
-            <div className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 24/7 availability</div>
-            <div className="flex items-center gap-2"><Heart className="h-4 w-4 text-primary" /> Continuous care</div>
+            {[
+              { Icon: ShieldCheck, label: "Verified nurses" },
+              { Icon: Clock, label: "24/7 availability" },
+              { Icon: Heart, label: "Continuous care" },
+            ].map(({ Icon, label }, i) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+                className="flex items-center gap-2 group cursor-default"
+              >
+                <Icon className="h-4 w-4 text-primary transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-6" />
+                <span className="group-hover:text-foreground transition-colors">{label}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
@@ -49,6 +83,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          style={{ y: y1 }}
           className="lg:col-span-5 relative flex justify-center"
         >
           <AppDashboardCard />
