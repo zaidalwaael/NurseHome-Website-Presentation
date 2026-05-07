@@ -21,10 +21,11 @@ export const Features = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="rounded-3xl bg-white border border-border/60 p-7 hover:border-primary/40 hover:-translate-y-1 transition-all shadow-card"
+            whileHover={{ y: -6 }}
+            className="group rounded-3xl bg-white border border-border/60 p-7 hover:border-primary/40 transition-all duration-500 shadow-card hover:shadow-elegant"
           >
-            <div className="h-11 w-11 rounded-xl bg-accent flex items-center justify-center mb-5">
-              <f.icon className="h-5 w-5 text-primary" />
+            <div className="h-11 w-11 rounded-xl bg-accent flex items-center justify-center mb-5 transition-all duration-500 group-hover:bg-primary group-hover:rotate-6">
+              <f.icon className="h-5 w-5 text-primary transition-colors duration-500 group-hover:text-primary-foreground" />
             </div>
             <h3 className="font-semibold mb-1">{f.title}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{f.text}</p>

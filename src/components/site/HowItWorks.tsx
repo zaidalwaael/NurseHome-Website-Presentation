@@ -22,11 +22,13 @@ export const HowItWorks = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="relative text-center"
+              whileHover={{ y: -4 }}
+              className="group relative text-center"
             >
-              <div className="relative mx-auto h-24 w-24 rounded-full bg-white border border-border flex items-center justify-center shadow-card">
-                <s.icon className="h-9 w-9 text-primary" />
-                <span className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-gradient-primary text-primary-foreground text-sm font-bold flex items-center justify-center shadow-soft">
+              <div className="relative mx-auto h-24 w-24 rounded-full bg-white border border-border flex items-center justify-center shadow-card transition-all duration-500 group-hover:shadow-elegant group-hover:border-primary/40">
+                <span className="absolute inset-0 rounded-full bg-primary/10 scale-0 group-hover:scale-110 transition-transform duration-700" />
+                <s.icon className="relative h-9 w-9 text-primary transition-transform duration-500 group-hover:scale-110" />
+                <span className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-gradient-primary text-primary-foreground text-sm font-bold flex items-center justify-center shadow-soft transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
                   {i + 1}
                 </span>
               </div>
