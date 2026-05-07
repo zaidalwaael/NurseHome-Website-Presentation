@@ -21,10 +21,12 @@ export const Solution = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
-            className="relative rounded-3xl p-[1px] bg-gradient-to-b from-primary/30 to-transparent"
+            whileHover={{ y: -6 }}
+            className="group relative rounded-3xl p-[1px] bg-gradient-to-b from-primary/30 to-transparent transition-all duration-500 hover:from-primary/60"
           >
-            <div className="rounded-3xl bg-white p-8 h-full shadow-card">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-primary flex items-center justify-center mb-6 shadow-soft">
+            <div className="relative rounded-3xl bg-white p-8 h-full shadow-card group-hover:shadow-elegant transition-shadow duration-500 overflow-hidden">
+              <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-primary/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="h-14 w-14 rounded-2xl bg-gradient-primary flex items-center justify-center mb-6 shadow-soft transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
                 <c.icon className="h-6 w-6 text-primary-foreground" />
               </div>
               <h3 className="text-xl font-semibold mb-2">{c.title}</h3>

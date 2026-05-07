@@ -20,9 +20,10 @@ export const TargetUsers = () => (
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
-            className="text-center rounded-3xl bg-white p-10 shadow-card border border-border/50"
+            whileHover={{ y: -6 }}
+            className="group text-center rounded-3xl bg-white p-10 shadow-card border border-border/50 transition-all duration-500 hover:shadow-elegant hover:border-primary/30"
           >
-            <div className="mx-auto h-16 w-16 rounded-full bg-gradient-primary flex items-center justify-center shadow-soft">
+            <div className="mx-auto h-16 w-16 rounded-full bg-gradient-primary flex items-center justify-center shadow-soft transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
               <u.icon className="h-7 w-7 text-primary-foreground" />
             </div>
             <h3 className="mt-6 text-xl font-semibold">{u.title}</h3>

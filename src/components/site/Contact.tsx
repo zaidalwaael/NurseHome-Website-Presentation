@@ -60,7 +60,7 @@ export const Contact = () => {
             />
             <button
               type="submit"
-              className="group bg-gradient-primary text-primary-foreground font-medium px-7 py-4 rounded-xl shadow-elegant hover:shadow-glow transition-all inline-flex items-center justify-center gap-2"
+              className="group shimmer-overlay bg-gradient-primary text-primary-foreground font-medium px-7 py-4 rounded-xl shadow-elegant hover:shadow-glow transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center justify-center gap-2"
             >
               Send message
               <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />

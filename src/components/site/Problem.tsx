@@ -20,10 +20,11 @@ export const Problem = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
-            className="group relative rounded-3xl bg-white border border-border/50 p-8 shadow-card hover:shadow-elegant transition-all"
+            whileHover={{ y: -6 }}
+            className="group relative rounded-3xl bg-white border border-border/50 p-8 shadow-card hover:shadow-elegant hover:border-primary/30 transition-all duration-500"
           >
-            <div className="h-12 w-12 rounded-2xl bg-accent flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <it.icon className="h-5 w-5 text-primary" />
+            <div className="h-12 w-12 rounded-2xl bg-accent flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-primary/15 transition-all duration-500">
+              <it.icon className="h-5 w-5 text-primary transition-transform duration-500 group-hover:-rotate-3" />
             </div>
             <h3 className="text-xl font-semibold mb-2">{it.title}</h3>
             <p className="text-muted-foreground leading-relaxed">{it.text}</p>
